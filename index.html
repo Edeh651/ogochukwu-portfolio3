@@ -1,0 +1,1585 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ogochukwu Portfolio</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: #f9f7f3;
+      }
+      button,
+      a {
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+
+    <script type="text/babel" data-presets="react">
+      const { useState, useEffect } = React;
+
+      const NAV = [
+        "About",
+        "Work",
+        "Results",
+        "Creatives",
+        "Reviews",
+        "Services",
+        "Contact",
+      ];
+
+      const BRANDS = [
+        { name: "Rungis Organics", init: "RO", color: "#2D6A4F", image: "ogo4.jpg" },
+        { name: "Remih Skincare", init: "RS", color: "#2E7D32", image: "ogo3.jpg" },
+        { name: "Sandos Bakeshop", init: "SB", color: "#C6602A", image: "ogo5.jpg" },
+      ];
+
+      const TESTIMONIALS = [
+        {
+          brand: "Rungis Organics",
+          role: "Men's Wellness · Content Strategy",
+          init: "RO",
+          color: "#2D6A4F",
+          text: "Ogochukwu completely transformed how we show up online. Our Instagram interactions went up 127% in under a month — that's not a coincidence. That's strategy.",
+        },
+        {
+          brand: "Remih Skincare",
+          role: "Skincare Brand · Campaign Content",
+          init: "RS",
+          color: "#2E7D32",
+          text: "The skincare routine campaign she created was exactly what we needed — real, personal, and educational. Our customers started tagging us after seeing it.",
+        },
+        {
+          brand: "Rungis Organics",
+          role: "Men's Wellness · Brand Voice",
+          init: "RO",
+          color: "#1B3A2D",
+          text: "The copy didn't feel like marketing — it felt like a conversation. That's rare, and it's what makes her stand out from every other digital marketer I've worked with.",
+        },
+        {
+          brand: "Remih Skincare",
+          role: "Skincare Brand · Content Calendar",
+          init: "RS",
+          color: "#1A4A2A",
+          text: "She delivered a full 30-day content calendar we could actually execute — post briefs, image direction, captions included. Like having a full in-house creative team.",
+        },
+      ];
+
+      const METRICS = [
+        {
+          num: "18.2K",
+          lbl: "Single Reel Views",
+          badge: "Facebook Reel",
+          green: false,
+        },
+        {
+          num: "97%",
+          lbl: "Google Ads Conversions Growth",
+          badge: "↑ Week-on-Week",
+          green: true,
+        },
+        {
+          num: "127%",
+          lbl: "Instagram Interactions",
+          badge: "↑ In 28 Days",
+          green: true,
+        },
+        {
+          num: "100%",
+          lbl: "Instagram Views Growth",
+          badge: "↑ In 28 Days",
+          green: true,
+        },
+      ];
+      const logo =[
+                  {
+                    id: 1,
+                    name: "LinkedIn",
+                    url: "https://www.linkedin.com/in/edeh-ogochukwu-b75269215?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+                    icon: "in",
+                  },
+                  {
+                    id: 2,
+                    name: "Email",
+                    icon: "✉",
+                    url: "mailto:Ogochukwuprecious171@gmail.com"
+                  },
+                  {
+                    id: 2,
+                    name: "Instagram",
+                    url: "https://www.instagram.com/ogochukwuprecious171",
+                    icon: "◎",
+                  }];
+
+      const SERVICES = [
+        {
+          icon: "✍️",
+          name: "Copywriting",
+          desc: "Social captions, carousel scripts, campaign copy — all written to feel human, not templated.",
+        },
+        {
+          icon: "📱",
+          name: "Social Media Strategy",
+          desc: "Platform-specific strategies with audience research, tone development & monthly calendars.",
+        },
+        {
+          icon: "🎯",
+          name: "Brand Voice",
+          desc: "Defining a brand's unique tone of voice — then applying it consistently across every touchpoint.",
+        },
+        {
+          icon: "📊",
+          name: "Analytics & Reporting",
+          desc: "Performance tracking via Meta Business Suite, Google Analytics & Google Ads.",
+        },
+        {
+          icon: "🌍",
+          name: "Multi-Market Content",
+          desc: "Culturally intelligent content for European and West African audiences simultaneously.",
+        },
+        {
+          icon: "📅",
+          name: "Content Calendars",
+          desc: "Monthly calendars — ideated, structured, and delivered ready to hand to any creative team.",
+        },
+      ];
+
+      const ANALYTICS_CARDS = [
+        {
+          platform: "Facebook Reel Insights",
+          headline:
+            "18,236 Views · 12,030 Reach · 570 Interactions · 1d 4h Watch Time",
+          emoji: "📱",
+        },
+        {
+          platform: "Google Ads — Campaign Performance",
+          headline: "Conversions ↑97% · 23,500 Total Conversions · CPA $4.52",
+          emoji: "📈",
+        },
+        {
+          platform: "Instagram Professional Dashboard",
+          headline:
+            "5,203 Views ↑100% · Engagement ↑100% · Net Followers ↑100%",
+          emoji: "📸",
+        },
+        {
+          platform: "Facebook Insights",
+          headline:
+            "40K Views · 991 Interactions · Follows ↑17.1% · Link Clicks ↑66.7%",
+          emoji: "👍",
+        },
+        {
+          platform: "Instagram Insights",
+          headline: "14.2K Views ↑47.5% · Interactions ↑127% · Follows ↑106%",
+          emoji: "💜",
+        },
+        {
+          platform: "Facebook Insights",
+          headline: "27.2K Views · 1.4K Interactions · Link Clicks ↑23.8%",
+          emoji: "🔵",
+        },
+      ];
+
+      const g = "#C9A84C";
+      const dark = "#1A1714";
+      const warm = "#6B665E";
+      const accent = "#C6602A";
+      const muted = "#8A8480";
+      const border = "#E4DDD2";
+      const offwhite = "#F9F7F3";
+
+      function Portfolio() {
+        const [active, setActive] = useState("About");
+        const [menuOpen, setMenuOpen] = useState(false);
+        const [isMobile, setIsMobile] = useState(false);
+
+        useEffect(() => {
+          const check = () => setIsMobile(window.innerWidth < 700);
+          check();
+          window.addEventListener("resize", check);
+          return () => window.removeEventListener("resize", check);
+        }, []);
+
+        const scrollTo = (id) => {
+          document
+            .getElementById(id.toLowerCase())
+            ?.scrollIntoView({ behavior: "smooth" });
+          setMenuOpen(false);
+          setActive(id);
+        };
+
+        const Card = ({ children, style = {} }) => (
+          <div
+            style={{
+              background: "white",
+              border: "1px solid " + border,
+              borderRadius: 10,
+              padding: 24,
+              ...style,
+            }}
+          >
+            {children}
+          </div>
+        );
+
+        const Tag = ({ children, color = accent, bg = "#F5EDD6" }) => (
+          <span
+            style={{
+              display: "inline-block",
+              background: bg,
+              color,
+              fontSize: 10,
+              fontWeight: 700,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              padding: "5px 13px",
+              borderRadius: 20,
+              marginBottom: 14,
+            }}
+          >
+            {children}
+          </span>
+        );
+
+        const SectionLabel = ({ children }) => (
+          <div
+            style={{
+              fontSize: 10,
+              letterSpacing: "0.22em",
+              textTransform: "uppercase",
+              color: g,
+              fontWeight: 700,
+              marginBottom: 12,
+            }}
+          >
+            {children}
+          </div>
+        );
+
+        const H2 = ({ children, light = false }) => (
+          <h2
+            style={{
+              fontFamily: "Georgia,serif",
+              fontSize: "clamp(26px,4vw,40px)",
+              fontWeight: 400,
+              color: light ? "#F9F7F3" : dark,
+              marginBottom: 36,
+              lineHeight: 1.1,
+            }}
+          >
+            {children}
+          </h2>
+        );
+
+        const Bullet = ({ children }) => (
+          <div
+            style={{
+              display: "flex",
+              gap: 8,
+              fontSize: 13,
+              color: dark,
+              marginBottom: 7,
+              lineHeight: 1.5,
+            }}
+          >
+            <span style={{ color: g, flexShrink: 0 }}>→</span>
+            {children}
+          </div>
+        );
+
+        return (
+          <div
+            style={{
+              fontFamily: "'Segoe UI',Arial,sans-serif",
+              background: offwhite,
+              color: dark,
+              overflowX: "hidden",
+              fontSize: 14,
+            }}
+          >
+            <nav
+              style={{
+                position: "fixed",
+                top: 0,
+                left: 0,
+                right: 0,
+                zIndex: 1000,
+                background: "rgba(26,23,20,0.97)",
+                backdropFilter: "blur(12px)",
+                height: 54,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                padding: "0 5vw",
+                borderBottom: "1px solid rgba(201,168,76,0.15)",
+              }}
+            >
+              <div
+                style={{
+                  fontFamily: "Georgia,serif",
+                  fontSize: 19,
+                  fontWeight: 700,
+                  color: "#F9F7F3",
+                }}
+              >
+                Ogo<span style={{ color: g }}>chukwu</span>
+              </div>
+              {!isMobile ? (
+                <div style={{ display: "flex", gap: 20, alignItems: "center" }}>
+                  {NAV.slice(0, 5).map((l) => (
+                    <button
+                      key={l}
+                      onClick={() => scrollTo(l)}
+                      style={{
+                        background: "none",
+                        border: "none",
+                        cursor: "pointer",
+                        fontSize: 11,
+                        letterSpacing: "0.12em",
+                        textTransform: "uppercase",
+                        color: active === l ? g : "#7A7672",
+                        fontWeight: active === l ? 700 : 400,
+                      }}
+                    >
+                      {l}
+                    </button>
+                  ))}
+                  <button
+                    onClick={() => scrollTo("Contact")}
+                    style={{
+                      background: g,
+                      color: dark,
+                      border: "none",
+                      cursor: "pointer",
+                      padding: "8px 18px",
+                      borderRadius: 4,
+                      fontSize: 11,
+                      fontWeight: 700,
+                      letterSpacing: "0.1em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Hire Me
+                  </button>
+                </div>
+              ) : (
+                <button
+                  onClick={() => setMenuOpen(!menuOpen)}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    color: g,
+                    fontSize: 22,
+                  }}
+                >
+                  {menuOpen ? "✕" : "☰"}
+                </button>
+              )}
+            </nav>
+
+            {menuOpen && (
+              <div
+                style={{
+                  position: "fixed",
+                  top: 54,
+                  left: 0,
+                  right: 0,
+                  background: "rgba(26,23,20,0.98)",
+                  zIndex: 999,
+                  padding: "20px 5vw",
+                  borderBottom: "1px solid rgba(201,168,76,0.2)",
+                }}
+              >
+                {NAV.map((l) => (
+                  <button
+                    key={l}
+                    onClick={() => scrollTo(l)}
+                    style={{
+                      display: "block",
+                      width: "100%",
+                      textAlign: "left",
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                      padding: "12px 0",
+                      fontSize: 14,
+                      letterSpacing: "0.1em",
+                      textTransform: "uppercase",
+                      color: "#ADA9A4",
+                      borderBottom: "1px solid rgba(255,255,255,0.05)",
+                    }}
+                  >
+                    {l}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            <section
+              style={{
+                minHeight: "100vh",
+                background: dark,
+                paddingTop: 54,
+                position: "relative",
+                overflow: "hidden",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                padding: "30px 6vw 60px",
+              }}
+            >
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background:
+                    "radial-gradient(ellipse at 20% 60%,rgba(201,168,76,0.12) 0%,transparent 55%)",
+                  pointerEvents: "none",
+                }}
+              />
+
+              <div
+                style={{
+                  maxWidth: 1200,
+                  margin: "0 auto",
+                  position: "relative",
+                  zIndex: 2,
+                  display: isMobile ? "block" : "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  gap: 48,
+                  alignItems: "center",
+                }}
+              >
+                <div>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 10,
+                      fontSize: 10,
+                      letterSpacing: "0.22em",
+                      textTransform: "uppercase",
+                      color: g,
+                      fontWeight: 700,
+                      marginBottom: 24,
+                    }}
+                  >
+                    <div style={{ width: 36, height: 1.5, background: g }} />
+                    Digital Marketing Portfolio · 2025
+                  </div>
+
+                  <h1
+                    style={{
+                      fontFamily: "Georgia,serif",
+                      fontSize: "clamp(52px,8vw,86px)",
+                      fontWeight: 300,
+                      color: "#F9F7F3",
+                      lineHeight: 1,
+                      marginBottom: 10,
+                    }}
+                  >
+                    Ogo<em style={{ fontStyle: "italic", color: g }}>chukwu</em>
+                  </h1>
+
+                  <div
+                    style={{
+                      fontSize: 11,
+                      letterSpacing: "0.18em",
+                      textTransform: "uppercase",
+                      color: "#7A7672",
+                      marginBottom: 24,
+                    }}
+                  >
+                    Copywriter · Content Strategist · Social Media Director
+                  </div>
+
+                  <p
+                    style={{
+                      fontSize: 15,
+                      lineHeight: 1.85,
+                      color: "#ADA9A4",
+                      maxWidth: 500,
+                      marginBottom: 36,
+                    }}
+                  >
+                    I build brand worlds — not just content. From strategy to copy
+                    to execution, I've helped skincare, wellness, and lifestyle
+                    brands across Africa and Europe grow their audiences and
+                    deepen their impact. Human-first. Data-informed. Built to
+                    last.
+                  </p>
+
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: 0,
+                      marginBottom: 40,
+                      border: "1px solid rgba(201,168,76,0.2)",
+                      borderRadius: 8,
+                      overflow: "hidden",
+                      width: "fit-content",
+                    }}
+                  >
+                    {[
+                      ["4+", "Brands"],
+                      ["54K+", "Views/mo"],
+                      ["127%", "Growth"],
+                      ["2", "Continents"],
+                    ].map(([n, l]) => (
+                      <div
+                        key={l}
+                        style={{
+                          padding: "14px 20px",
+                          borderRight: "1px solid rgba(201,168,76,0.15)",
+                          textAlign: "center",
+                          minWidth: 80,
+                        }}
+                      >
+                        <div
+                          style={{
+                            fontFamily: "Georgia,serif",
+                            fontSize: 22,
+                            fontWeight: 700,
+                            color: g,
+                            lineHeight: 1,
+                          }}
+                        >
+                          {n}
+                        </div>
+                        <div
+                          style={{
+                            fontSize: 9,
+                            letterSpacing: "0.1em",
+                            textTransform: "uppercase",
+                            color: "#605C58",
+                            marginTop: 4,
+                          }}
+                        >
+                          {l}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                    <button
+                      onClick={() => scrollTo("Work")}
+                      style={{
+                        background: g,
+                        color: dark,
+                        border: "none",
+                        cursor: "pointer",
+                        padding: "13px 28px",
+                        borderRadius: 5,
+                        fontSize: 12,
+                        fontWeight: 700,
+                        letterSpacing: "0.1em",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      View My Work
+                    </button>
+                    <button
+                      onClick={() => scrollTo("Contact")}
+                      style={{
+                        background: "none",
+                        color: g,
+                        border: "1px solid rgba(201,168,76,0.4)",
+                        cursor: "pointer",
+                        padding: "13px 28px",
+                        borderRadius: 5,
+                        fontSize: 12,
+                        fontWeight: 500,
+                        letterSpacing: "0.1em",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      Get In Touch
+                    </button>
+                  </div>
+                </div>
+
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "100%",
+                      maxWidth: 440,
+                      aspectRatio: "4 / 5",
+                      borderRadius: 28,
+                      overflow: "hidden",
+                      boxShadow: "0 30px 80px rgba(0,0,0,0.35)",
+                      background: "rgba(255,255,255,0.06)",
+                      border: "1px solid rgba(255,255,255,0.12)",
+                    }}
+                  >
+                    <img
+                      src="ogopic.png"
+                      alt="Ogochukwu"
+                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                    />
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section
+              id="about"
+              style={{ background: offwhite, padding: "80px 6vw" }}
+            >
+              <div
+                style={{
+                  maxWidth: 900,
+                  margin: "0 auto",
+                  display: isMobile ? "block" : "grid",
+                  gridTemplateColumns: "220px 1fr",
+                  gap: 52,
+                  alignItems: "start",
+                }}
+              >
+                <div style={{ marginBottom: isMobile ? 32 : 0 }}>
+                  <div
+                    style={{
+                      width: isMobile ? 160 : "100%",
+                      height: isMobile ? 160 : 220,
+                      borderRadius: "50%",
+                      background: "linear-gradient(135deg,#2D6A4F,#C9A84C)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      margin: isMobile ? "0 auto 16px" : "0 auto 0",
+                      boxShadow: "0 20px 60px rgba(0,0,0,0.15)",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <div style={{ textAlign: "center" }}>
+                      <div
+                        style={{ fontSize: isMobile ? 48 : 64, lineHeight: 1 }}
+                      >
+                        <img src="ogopic.png" alt="Ogochukwu" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                      </div>
+                      <div
+                        style={{
+                          fontSize: 10,
+                          color: "rgba(255,255,255,0.8)",
+                          letterSpacing: "0.1em",
+                          textTransform: "uppercase",
+                          marginTop: 4,
+                        }}
+                      >
+                        Ogochukwu
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    style={{
+                      textAlign: "center",
+                      marginTop: 14,
+                      background: g,
+                      color: dark,
+                      padding: "9px 14px",
+                      borderRadius: 6,
+                      fontSize: 9.5,
+                      fontWeight: 700,
+                      letterSpacing: "0.1em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    ✦ Available for Projects
+                  </div>
+                </div>
+
+                <div>
+                  <SectionLabel>About Me</SectionLabel>
+                  <H2>
+                    A strategist who{" "}
+                    <em style={{ fontStyle: "italic", color: accent }}>
+                      writes
+                    </em>{" "}
+                    — and a writer who{" "}
+                    <em style={{ fontStyle: "italic", color: accent }}>
+                      thinks
+                    </em>
+                  </H2>
+                  <p
+                    style={{
+                      fontSize: 14.5,
+                      lineHeight: 1.85,
+                      color: warm,
+                      marginBottom: 18,
+                    }}
+                  >
+                    I'm a copywriter and digital marketing specialist with
+                    hands-on experience building brand voices, driving audience
+                    engagement, and managing content across platforms — from
+                    Instagram and TikTok to Facebook, Threads, and Google My
+                    Business.
+                  </p>
+                  <p
+                    style={{
+                      fontSize: 14.5,
+                      lineHeight: 1.85,
+                      color: warm,
+                      marginBottom: 24,
+                    }}
+                  >
+                    My background in Archaeology & Tourism from the University
+                    of Nigeria, Nsukka gives me a researcher's instinct: I study
+                    what moves people, then craft messaging that converts
+                    attention into action. I've worked across European and West
+                    African markets, bringing cultural intelligence to every
+                    brief.
+                  </p>
+
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+                      gap: 10,
+                      marginBottom: 24,
+                    }}
+                  >
+                    {[
+                      ["Education", "B.Sc. Archaeology & Tourism — UNN"],
+                      ["Markets", "Europe & West Africa"],
+                      ["Tools", "Meta Suite · Google Analytics · Google Ads"],
+                      ["Platforms", "Instagram · TikTok · Facebook · Threads"],
+                    ].map(([l, v]) => (
+                      <div
+                        key={l}
+                        style={{
+                          background: "white",
+                          border: "1px solid " + border,
+                          borderLeft: "3px solid " + g,
+                          borderRadius: 6,
+                          padding: "11px 14px",
+                        }}
+                      >
+                        <div
+                          style={{
+                            fontSize: 9,
+                            letterSpacing: "0.14em",
+                            textTransform: "uppercase",
+                            color: muted,
+                            marginBottom: 3,
+                          }}
+                        >
+                          {l}
+                        </div>
+                        <div
+                          style={{
+                            fontSize: 12.5,
+                            color: dark,
+                            fontWeight: 500,
+                          }}
+                        >
+                          {v}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                </div>
+              </div>
+            </section>
+
+            <div style={{ background: dark, padding: "40px 6vw" }}>
+              <div
+                style={{
+                  textAlign: "center",
+                  fontSize: 15,
+                  letterSpacing: "0.22em",
+                  textTransform: "uppercase",
+                  color: "white",
+                  marginBottom: 26,
+                  fontWeight: 500,
+                }}
+              >
+                Brands I've Worked With
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  gap: 36,
+                  flexWrap: "wrap",
+                }}
+              >
+                {BRANDS.map((b) => (
+                  <div
+                    key={b.name}
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      gap: 8,
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: 70,
+                        height: 70,
+                        borderRadius: "50%",
+                        background: b.color,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: 9,
+                        fontWeight: 700,
+                        color: "white",
+                        textAlign: "center",
+                      }}
+                    >
+                      <img src={b.image} alt={b.name} style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius: "50%" }} />
+                    </div>
+                    <span
+                      style={{
+                        fontSize: 10,
+                        letterSpacing: "0.1em",
+                        textTransform: "uppercase",
+                        color: "white",
+                      }}
+                    >
+                      {b.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <section
+              id="work"
+              style={{ padding: "80px 6vw", background: offwhite }}
+            >
+              <div style={{ maxWidth: 900, margin: "0 auto" }}>
+                <SectionLabel>Selected Work</SectionLabel>
+                <H2>
+                  Campaigns &{" "}
+                  <em style={{ fontStyle: "italic", color: accent }}>
+                    Content
+                  </em>
+                </H2>
+
+                <Card
+                  style={{ marginBottom: 28, borderLeft: "4px solid " + g }}
+                >
+                  <Tag>Skincare · Campaign Content · Carousel Copy</Tag>
+                  <h3
+                    style={{
+                      fontFamily: "Georgia,serif",
+                      fontSize: 22,
+                      fontWeight: 600,
+                      color: dark,
+                      marginBottom: 12,
+                    }}
+                  >
+                    Remih Skincare — Routine Campaign
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: 13.5,
+                      lineHeight: 1.85,
+                      color: warm,
+                      marginBottom: 18,
+                    }}
+                  >
+                    Developed and directed a step-by-step skincare routine
+                    content series for Remih Skincare ("Let Your Light Shine").
+                    The brief: make skincare education feel personal and
+                    conversion-focused — not clinical. Scripted the
+                    before-and-after narrative, directed the carousel structure,
+                    and wrote all on-screen copy — creating a journey that
+                    converts viewers into buyers.
+                  </p>
+                  <div
+                    style={{
+                      background: offwhite,
+                      border: "1px solid " + border,
+                      borderLeft: "3px solid " + g,
+                      borderRadius: 6,
+                      padding: "16px 18px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontSize: 9,
+                        letterSpacing: "0.16em",
+                        textTransform: "uppercase",
+                        color: g,
+                        fontWeight: 700,
+                        marginBottom: 10,
+                      }}
+                    >
+                      What I Delivered
+                    </div>
+                    <Bullet>
+                      Scripted & directed multi-step routine carousel series
+                    </Bullet>
+                    <Bullet>
+                      Before/after narrative that builds trust & drives
+                      conversion
+                    </Bullet>
+                    <Bullet>
+                      Product copy: Vitamin B3 Serum, Moisturiser & Cleanser
+                    </Bullet>
+                    <Bullet>
+                      Visual storytelling direction for every carousel slide
+                    </Bullet>
+                  </div>
+                </Card>
+
+                <Card style={{ borderLeft: "4px solid #2D6A4F" }}>
+                  <Tag color="#2D6A4F" bg="#E8F4ED">
+                    Men's Wellness · Brand Campaign · Social Copy
+                  </Tag>
+                  <h3
+                    style={{
+                      fontFamily: "Georgia,serif",
+                      fontSize: 22,
+                      fontWeight: 600,
+                      color: dark,
+                      marginBottom: 12,
+                    }}
+                  >
+                    Rungis Organics — Brand Voice & Campaign Copy
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: 13.5,
+                      lineHeight: 1.85,
+                      color: warm,
+                      marginBottom: 18,
+                    }}
+                  >
+                    Built the full brand voice for Rungis Organics from the
+                    ground up — shame-free, body-aware language that speaks
+                    directly to men. Developed campaign concepts including
+                    "Mount Your Guard" and "Choose Which Man You Want To Be" —
+                    copy that makes men feel seen, not sold to.
+                  </p>
+                  <div
+                    style={{
+                      background: offwhite,
+                      border: "1px solid " + border,
+                      borderLeft: "3px solid #2D6A4F",
+                      borderRadius: 6,
+                      padding: "16px 18px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontSize: 9,
+                        letterSpacing: "0.16em",
+                        textTransform: "uppercase",
+                        color: "#2D6A4F",
+                        fontWeight: 700,
+                        marginBottom: 10,
+                      }}
+                    >
+                      What I Delivered
+                    </div>
+                    <Bullet>
+                      Brand voice defined: direct, empathetic, shame-free
+                    </Bullet>
+                    <Bullet>
+                      "Mount Your Guard" — Strength. Stamina. Confidence.
+                    </Bullet>
+                    <Bullet>
+                      "Choose Which Man You Want To Be" aspirational campaign
+                    </Bullet>
+                    <Bullet>
+                      30-day content calendar with full copy & image direction
+                    </Bullet>
+                  </div>
+                </Card>
+              </div>
+            </section>
+
+            <section
+              id="results"
+              style={{ background: dark, padding: "80px 6vw" }}
+            >
+              <div style={{ maxWidth: 900, margin: "0 auto" }}>
+                <SectionLabel>Proof of Performance</SectionLabel>
+                <H2 light>
+                  Results That{" "}
+                  <em style={{ fontStyle: "italic", color: g }}>Speak</em>
+                </H2>
+
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+                    gap: 14,
+                    marginBottom: 28,
+                  }}
+                >
+                  {ANALYTICS_CARDS.map((a, i) => (
+                    <div
+                      key={i}
+                      style={{
+                        background: "rgba(255,255,255,0.04)",
+                        border: "1px solid rgba(201,168,76,0.18)",
+                        borderRadius: 8,
+                        padding: "20px 18px",
+                      }}
+                    >
+                      <div style={{ fontSize: 20, marginBottom: 8 }}>
+                        {a.emoji}
+                      </div>
+                      <div
+                        style={{
+                          fontSize: 9,
+                          letterSpacing: "0.16em",
+                          textTransform: "uppercase",
+                          color: g,
+                          fontWeight: 700,
+                          marginBottom: 6,
+                        }}
+                      >
+                        {a.platform}
+                      </div>
+                      <div
+                        style={{
+                          fontSize: 13,
+                          color: "#C8C4C0",
+                          lineHeight: 1.6,
+                        }}
+                      >
+                        {a.headline}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(4,1fr)",
+                    gap: 12,
+                  }}
+                >
+                  {METRICS.map((m) => (
+                    <div
+                      key={m.num}
+                      style={{
+                        background: "rgba(255,255,255,0.04)",
+                        border: "1px solid rgba(201,168,76,0.18)",
+                        borderRadius: 8,
+                        padding: "18px 12px",
+                        textAlign: "center",
+                      }}
+                    >
+                      <div
+                        style={{
+                          fontFamily: "Georgia,serif",
+                          fontSize: 30,
+                          fontWeight: 700,
+                          color: g,
+                          lineHeight: 1,
+                          marginBottom: 6,
+                        }}
+                      >
+                        {m.num}
+                      </div>
+                      <div
+                        style={{
+                          fontSize: 9,
+                          letterSpacing: "0.1em",
+                          textTransform: "uppercase",
+                          color: "#7A7672",
+                          marginBottom: 8,
+                        }}
+                      >
+                        {m.lbl}
+                      </div>
+                      <span
+                        style={{
+                          fontSize: 10,
+                          fontWeight: 600,
+                          padding: "3px 9px",
+                          borderRadius: 10,
+                          display: "inline-block",
+                          background: m.green
+                            ? "rgba(45,106,79,0.25)"
+                            : "rgba(201,168,76,0.2)",
+                          color: m.green ? "#6FCF97" : g,
+                        }}
+                      >
+                        {m.badge}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            <section
+              id="creatives"
+              style={{ padding: "80px 6vw", background: "white" }}
+            >
+              <div style={{ maxWidth: 900, margin: "0 auto" }}>
+                <SectionLabel>Design Creatives</SectionLabel>
+                <H2>
+                  Copy That{" "}
+                  <em style={{ fontStyle: "italic", color: accent }}>
+                    Converts
+                  </em>
+                </H2>
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+                    gap: 20,
+                  }}
+                >
+                  {[
+                    {
+                      title: '"Mount Your Guard"',
+                      desc: "Strength. Stamina. Confidence. You're built for more. — Campaign positioning Rungis Organics as the natural performance partner for men who demand more.",
+                      image: "ogo1.jpg",
+                    },
+                    {
+                      title: '"Choose Which Man You Want To Be"',
+                      desc: "Aspirational identity campaign built around transformation — not shame. Concept, copy, and creative brief all originated from my strategy.",
+                      image: "ogo2.jpg",
+                    },
+                  ].map((c, i) => (
+                    <div
+                      key={i}
+                      style={{
+                        background: dark,
+                        borderRadius: 10,
+                        overflow: "hidden",
+                        boxShadow: "0 20px 50px rgba(0,0,0,0.12)",
+                      }}
+                    >
+                      <div
+                        style={{
+                          height: 200,
+                          background: "linear-gradient(135deg,#1B3A2D,#2D6A4F)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          fontSize: 48,
+                        }}
+                      >
+                        <img
+                          src={c.image}
+                          alt={c.title}
+                          style={{ width: "100%", height: "80%", objectFit: "contain" }}
+                        />
+                      </div>
+                      <div style={{ padding: "20px 22px 22px" }}>
+                        <div
+                          style={{
+                            fontSize: 9,
+                            letterSpacing: "0.16em",
+                            textTransform: "uppercase",
+                            color: g,
+                            fontWeight: 700,
+                            marginBottom: 6,
+                          }}
+                        >
+                          Rungis Organics · Men's Wellness
+                        </div>
+                        <div
+                          style={{
+                            fontFamily: "Georgia,serif",
+                            fontSize: 17,
+                            fontWeight: 600,
+                            color: "#F9F7F3",
+                            marginBottom: 8,
+                          }}
+                        >
+                          {c.title}
+                        </div>
+                        <div
+                          style={{
+                            fontSize: 12.5,
+                            color: "#7A7672",
+                            lineHeight: 1.6,
+                            marginBottom: 16,
+                          }}
+                        >
+                          {c.desc}
+                        </div>
+                        <div
+                          style={{
+                            display: "flex",
+                            gap: 16,
+                            paddingTop: 14,
+                            borderTop: "1px solid rgba(255,255,255,0.07)",
+                          }}
+                        >
+                          {[
+                            ["❤️", "1,658", "likes"],
+                            ["💬", "187", "comments"],
+                            ["↗️", "268", "shares"],
+                          ].map(([ic, n, l]) => (
+                            <div
+                              key={l}
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: 4,
+                                fontSize: 12,
+                                color: "#ADA9A4",
+                              }}
+                            >
+                              {ic}{" "}
+                              <strong style={{ color: "#F9F7F3" }}>{n}</strong>{" "}
+                              {l}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            <section
+              id="reviews"
+              style={{ background: "#0F0E0C", padding: "80px 6vw" }}
+            >
+              <div style={{ maxWidth: 900, margin: "0 auto" }}>
+                <SectionLabel>Client Reviews</SectionLabel>
+                <H2 light>
+                  What Brands{" "}
+                  <em style={{ fontStyle: "italic", color: g }}>Say</em>
+                </H2>
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+                    gap: 18,
+                  }}
+                >
+                  {TESTIMONIALS.map((t, i) => (
+                    <div
+                      key={i}
+                      style={{
+                        background: "rgba(255,255,255,0.03)",
+                        border: "1px solid rgba(201,168,76,0.13)",
+                        borderRadius: 8,
+                        padding: "26px 22px",
+                        position: "relative",
+                      }}
+                    >
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: 20,
+                          right: 18,
+                          color: g,
+                          fontSize: 11,
+                          letterSpacing: 2,
+                        }}
+                      >
+                        ★★★★★
+                      </div>
+                      <div
+                        style={{
+                          fontFamily: "Georgia,serif",
+                          fontSize: 48,
+                          color: "rgba(201,168,76,0.2)",
+                          lineHeight: 0.6,
+                          marginBottom: 16,
+                        }}
+                      >
+                        "
+                      </div>
+                      <p
+                        style={{
+                          fontFamily: "Georgia,serif",
+                          fontStyle: "italic",
+                          fontSize: 15,
+                          lineHeight: 1.75,
+                          color: "#C8C4C0",
+                          marginBottom: 20,
+                        }}
+                      >
+                        {t.text}
+                      </p>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 10,
+                        }}
+                      >
+                        <div
+                          style={{
+                            width: 36,
+                            height: 36,
+                            borderRadius: "50%",
+                            background: t.color,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            fontSize: 11,
+                            fontWeight: 700,
+                            color: "white",
+                            flexShrink: 0,
+                          }}
+                        >
+                          {t.init}
+                        </div>
+                        <div>
+                          <div
+                            style={{
+                              fontSize: 13,
+                              fontWeight: 600,
+                              color: "#F9F7F3",
+                            }}
+                          >
+                            {t.brand}
+                          </div>
+                          <div
+                            style={{
+                              fontSize: 11,
+                              color: "#605C58",
+                              marginTop: 2,
+                            }}
+                          >
+                            {t.role}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            <section
+              id="services"
+              style={{ padding: "80px 6vw", background: offwhite }}
+            >
+              <div style={{ maxWidth: 900, margin: "0 auto" }}>
+                <SectionLabel>What I Offer</SectionLabel>
+                <H2>Services</H2>
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: isMobile ? "1fr" : "repeat(3,1fr)",
+                    gap: 16,
+                  }}
+                >
+                  {SERVICES.map((sv) => (
+                    <div
+                      key={sv.name}
+                      style={{
+                        background: "white",
+                        border: "1px solid " + border,
+                        borderRadius: 8,
+                        padding: "24px 20px",
+                      }}
+                    >
+                      <div style={{ fontSize: 24, marginBottom: 12 }}>
+                        {sv.icon}
+                      </div>
+                      <div
+                        style={{
+                          fontFamily: "Georgia,serif",
+                          fontSize: 17,
+                          fontWeight: 600,
+                          color: dark,
+                          marginBottom: 8,
+                        }}
+                      >
+                        {sv.name}
+                      </div>
+                      <p style={{ fontSize: 13, lineHeight: 1.7, color: warm }}>
+                        {sv.desc}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            <section
+              style={{
+                background: "linear-gradient(135deg,#1A1714 0%,#1A1200 100%)",
+                textAlign: "center",
+                padding: "90px 6vw",
+                position: "relative",
+                overflow: "hidden",
+              }}
+            >
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background:
+                    "radial-gradient(ellipse at center,rgba(201,168,76,0.09) 0%,transparent 70%)",
+                  pointerEvents: "none",
+                }}
+              />
+              <div
+                style={{
+                  fontSize: 10,
+                  letterSpacing: "0.22em",
+                  textTransform: "uppercase",
+                  color: g,
+                  fontWeight: 700,
+                  marginBottom: 16,
+                  position: "relative",
+                }}
+              >
+                Why It Matters
+              </div>
+              <h2
+                style={{
+                  fontFamily: "Georgia,serif",
+                  fontSize: "clamp(26px,4vw,48px)",
+                  fontWeight: 300,
+                  color: "#F9F7F3",
+                  lineHeight: 1.15,
+                  maxWidth: 680,
+                  margin: "0 auto 22px",
+                  position: "relative",
+                }}
+              >
+                Storytelling is how cultures{" "}
+                <em style={{ fontStyle: "italic", color: g }}>survive</em> — and
+                how brands{" "}
+                <em style={{ fontStyle: "italic", color: g }}>thrive</em>.
+              </h2>
+              <p
+                style={{
+                  fontSize: 15,
+                  lineHeight: 1.9,
+                  color: "#8A8480",
+                  maxWidth: 580,
+                  margin: "0 auto 40px",
+                  position: "relative",
+                }}
+              >
+                My background in Archaeology & Tourism taught me that every
+                great civilisation left its mark through the stories it told. I
+                apply that same principle to digital marketing — every brand has
+                a story worth telling, and my job is to tell it in a way that
+                outlasts the algorithm.
+              </p>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  gap: 32,
+                  flexWrap: "wrap",
+                  marginBottom: 44,
+                  position: "relative",
+                }}
+              >
+                {[
+                  ["🔍", "Research-Driven", "Archaeology background"],
+                  ["🌍", "Cross-Cultural", "Europe & West Africa"],
+                  ["📈", "Results-Focused", "Data meets creativity"],
+                  ["💡", "Self-Driven", "Initiative built in"],
+                ].map(([icon, lbl, sub]) => (
+                  <div key={lbl} style={{ textAlign: "center" }}>
+                    <div style={{ fontSize: 24, marginBottom: 8 }}>{icon}</div>
+                    <div
+                      style={{
+                        fontSize: 10,
+                        letterSpacing: "0.14em",
+                        textTransform: "uppercase",
+                        color: g,
+                        fontWeight: 700,
+                      }}
+                    >
+                      {lbl}
+                    </div>
+                    <div
+                      style={{ fontSize: 11, color: "#605C58", marginTop: 3 }}
+                    >
+                      {sub}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <div
+              id="contact"
+              style={{
+                background: dark,
+                padding: "48px 6vw",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                flexWrap: "wrap",
+                gap: 22,
+                borderTop: "1px solid rgba(201,168,76,0.15)",
+              }}
+            >
+              <div>
+                <div
+                  style={{
+                    fontFamily: "Georgia,serif",
+                    fontSize: 21,
+                    color: "#F9F7F3",
+                    marginBottom: 5,
+                  }}
+                >
+                  Ogo<span style={{ color: g }}>chukwu</span>
+                </div>
+                <div style={{ fontSize: 12, color: "#605C58" }}>
+                  Copywriter & Digital Marketing Strategist
+                </div>
+              </div>
+              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                {
+                logo.map(({ icon, name, url }) => (
+                  <a
+                    key={name}
+                    href={url}
+                    style={{
+                      background: "rgba(201,168,76,0.1)",
+                      border: "1px solid rgba(201,168,76,0.25)",
+                      color: g,
+                      padding: "10px 16px",
+                      borderRadius: 6,
+                      fontSize: 12,
+                      fontWeight: 500,
+                      textDecoration: "none",
+                    }}
+                  >
+                    {icon} {name}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<Portfolio />);
+    </script>
+      <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </body>
+</html>
