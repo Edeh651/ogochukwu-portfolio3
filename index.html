@@ -89,21 +89,21 @@
       ];
 
       const SERVICES = [
-        { icon: "✍️", name: "Copywriting",           desc: "Social captions, carousel scripts, campaign copy — all written to feel human, not templated." },
-        { icon: "📱", name: "Social Media Strategy", desc: "Platform-specific strategies with audience research, tone development & monthly calendars." },
-        { icon: "🎯", name: "Brand Voice",            desc: "Defining a brand's unique tone of voice — then applying it consistently across every touchpoint." },
-        { icon: "📊", name: "Analytics & Reporting", desc: "Performance tracking via Meta Business Suite, Google Analytics & Google Ads." },
-        { icon: "🌍", name: "Multi-Market Content",  desc: "Culturally intelligent content for European and West African audiences simultaneously." },
-        { icon: "📅", name: "Content Calendars",     desc: "Monthly calendars — ideated, structured, and delivered ready to hand to any creative team." },
+        { image: "✍️", name: "Copywriting",           desc: "Social captions, carousel scripts, campaign copy — all written to feel human, not templated." },
+        { image: "📱", name: "Social Media Strategy", desc: "Platform-specific strategies with audience research, tone development & monthly calendars." },
+        { image: "🎯", name: "Brand Voice",            desc: "Defining a brand's unique tone of voice — then applying it consistently across every touchpoint." },
+        { image: "📊", name: "Analytics & Reporting", desc: "Performance tracking via Meta Business Suite, Google Analytics & Google Ads." },
+        { image: "🌍", name: "Multi-Market Content",  desc: "Culturally intelligent content for European and West African audiences simultaneously." },
+        { image: "📅", name: "Content Calendars",     desc: "Monthly calendars — ideated, structured, and delivered ready to hand to any creative team." },
       ];
 
       const ANALYTICS_CARDS = [
-        { platform: "Facebook Reel Insights",          headline: "18,236 Views · 12,030 Reach · 570 Interactions · 1d 4h Watch Time", emoji: "📱" },
-        { platform: "Google Ads — Campaign",           headline: "Conversions ↑97% · 23,500 Total Conversions · CPA $4.52",           emoji: "📈" },
-        { platform: "Instagram Professional Dashboard",headline: "5,203 Views ↑100% · Engagement ↑100% · Net Followers ↑100%",        emoji: "📸" },
-        { platform: "Facebook Insights",               headline: "40K Views · 991 Interactions · Follows ↑17.1% · Link Clicks ↑66.7%", emoji: "👍" },
-        { platform: "Instagram Insights",              headline: "14.2K Views ↑47.5% · Interactions ↑127% · Follows ↑106%",           emoji: "💜" },
-        { platform: "Facebook Insights",               headline: "27.2K Views · 1.4K Interactions · Link Clicks ↑23.8%",              emoji: "🔵" },
+        { platform: "Facebook Reel Insights",          headline: "18,236 Views · 12,030 Reach · 570 Interactions · 1d 4h Watch Time", image: "ogo6.jpeg" },
+        { platform: "Google Ads — Campaign",           headline: "Conversions ↑97% · 23,500 Total Conversions · CPA $4.52",           image: "ogo7.png" },
+        { platform: "Instagram Professional Dashboard",headline: "5,203 Views ↑100% · Engagement ↑100% · Net Followers ↑100%",        image: "ogo8.jpeg" },
+        { platform: "Facebook Insights",               headline: "40K Views · 991 Interactions · Follows ↑17.1% · Link Clicks ↑66.7%", image: "ogo9.jpeg" },
+        { platform: "Instagram Insights",              headline: "14.2K Views ↑47.5% · Interactions ↑127% · Follows ↑106%",           image: "ogo10.jpeg" },
+        { platform: "Facebook Insights",               headline: "27.2K Views · 1.4K Interactions · Link Clicks ↑23.8%",              image: "ogo11.jpeg" },
       ];
 
       // Design tokens
@@ -659,7 +659,7 @@
                       border: "1px solid rgba(201,168,76,0.16)",
                       borderRadius: 10, padding: "20px 18px",
                     }}>
-                      <div style={{ fontSize: 22, marginBottom: 10 }}>{a.emoji}</div>
+                      <div style={{ fontSize: 22, marginBottom: 10 }}><img src={a.image} alt={a.platform} style={{ maxWidth: "auto", height:100, objectFit: "cover", display: "block" }} /></div>
                       <div style={{
                         fontSize: 9, letterSpacing: "0.16em", textTransform: "uppercase",
                         color: g, fontWeight: 700, marginBottom: 6,
