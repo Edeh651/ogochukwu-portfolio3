@@ -542,7 +542,7 @@
               <div style={{ maxWidth: 960, margin: "0 auto" }}>
                 <SectionLabel>Selected Work</SectionLabel>
                 <H2>
-                  Campaigns &{" "}
+                  Campaigns &
                   <em style={{ fontStyle: "italic", color: accent }}>Content</em>
                 </H2>
 
@@ -713,83 +713,101 @@
 
             {/* ── CREATIVES ────────────────────────────────────────────────── */}
             <section id="creatives" style={{ padding: isMobile ? "64px 5vw" : "88px 6vw", background: "white" }}>
-              <div style={{ maxWidth: 960, margin: "0 auto" }}>
+            <div style={{ maxWidth: 960, margin: "0 auto" }}>
                 <SectionLabel>Design Creatives</SectionLabel>
                 <H2>
                   Copy That{" "}
                   <em style={{ fontStyle: "italic", color: accent }}>Converts</em>
                 </H2>
+
                 <div style={{
                   display: "grid",
                   gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
                   gap: 22,
                 }}>
-                  {[
-                    {
-                      title: '"Mount Your Guard"',
-                      desc: "Strength. Stamina. Confidence. You're built for more. — Campaign positioning Rungis Organics as the natural performance partner for men who demand more.",
-                      image: "ogo1.jpg",
-                    },
-                    {
-                      title: '"Choose Which Man You Want To Be"',
-                      desc: "Aspirational identity campaign built around transformation — not shame. Concept, copy, and creative brief all originated from my strategy.",
-                      image: "ogo2.jpg",
-                    },
-                  ].map((c, i) => (
-                    <div key={i} style={{
-                      background: dark, borderRadius: 12, overflow: "hidden",
-                      boxShadow: "0 20px 56px rgba(0,0,0,0.14)",
-                    }}>
-                      <div style={{
-                        height: isMobile ? 180 : 220,
-                        background: "linear-gradient(135deg,#1B3A2D,#2D6A4F)",
-                        display: "flex", alignItems: "center", justifyContent: "center",
-                        overflow: "hidden",
-                      }}>
-                        <img src={c.image} alt={c.title}
-                          style={{ width: "50%", height: "100%", objectFit: "cover", display: "block" }}
-                        />
-                      </div>
-                      <div style={{ padding: isMobile ? "18px 18px 20px" : "20px 24px 24px" }}>
-                        <div style={{
-                          fontSize: 9, letterSpacing: "0.16em", textTransform: "uppercase",
-                          color: g, fontWeight: 700, marginBottom: 6,
-                        }}>
-                          Rungis Organics · Men's Wellness
-                        </div>
-                        <div style={{
-                          fontFamily: serif, fontSize: 18, fontWeight: 600,
-                          color: offwhite, marginBottom: 10,
-                        }}>
-                          {c.title}
-                        </div>
-                        <div style={{ fontSize: 13, color: "#7A7672", lineHeight: 1.65, marginBottom: 16 }}>
-                          {c.desc}
-                        </div>
-                        <div style={{
-                          display: "flex", gap: 16, paddingTop: 14,
-                          borderTop: "1px solid rgba(255,255,255,0.07)",
-                          flexWrap: "wrap",
-                        }}>
-                          {[["❤️","1,658","likes"],["💬","187","comments"],["↗️","268","shares"]].map(([ic, n, l]) => (
-                            <div key={l} style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 12, color: "#ADA9A4" }}>
-                              {ic} <strong style={{ color: offwhite }}>{n}</strong> {l}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+            {[
+              {
+                title: '"Mount Your Guard"',
+                desc: "Strength. Stamina. Confidence. You're built for more. — Campaign positioning Rungis Organics as the natural performance partner for men who demand more.",
+                image: "ogo1.jpg",
+                stats: [                              
+                  ["❤️", "1,658", "likes"],
+                  ["💬", "187",   "comments"],
+                  ["↗️", "268",   "shares"],
+                ],
+              },
+              {
+                title: '"Choose Which Man You Want To Be"',
+                desc: "Aspirational identity campaign built around transformation — not shame. Concept, copy, and creative brief all originated from my strategy.",
+                image: "ogo2.jpg",
+                stats: [                              
+                  ["❤️", "2,658", "likes"],
+                  ["💬", "700",   "comments"],
+                  ["↗️", "120",   "shares"],
+                ],
+              },
+            ].map((c, i) => (
+              <div key={i} style={{
+                background: dark, borderRadius: 12, overflow: "hidden",
+                boxShadow: "0 20px 56px rgba(0,0,0,0.14)",
+              }}>
+
+          {/* Image */}
+          <div style={{
+            height: isMobile ? 180 : 220,
+            background: "linear-gradient(135deg,#1B3A2D,#2D6A4F)",
+            overflow: "hidden",
+            display: "flex", alignItems: "center", justifyContent: "center",
+          }}>
+            <img src={c.image} alt={c.title}
+              style={{ width: "50%", height: "100%", objectFit: "cover", display: "flex" }}
+            />
+          </div>
+
+          {/* Text content */}
+          <div style={{ padding: isMobile ? "18px 18px 20px" : "20px 24px 24px" }}>
+            <div style={{
+              fontSize: 9, letterSpacing: "0.16em", textTransform: "uppercase",
+              color: g, fontWeight: 700, marginBottom: 6,
+            }}>
+              Rungis Organics · Men's Wellness
+            </div>
+            <div style={{
+              fontFamily: serif, fontSize: 18, fontWeight: 600,
+              color: offwhite, marginBottom: 10,
+            }}>
+              {c.title}
+            </div>
+            <div style={{ fontSize: 13, color: "#7A7672", lineHeight: 1.65, marginBottom: 16 }}>
+              {c.desc}
+            </div>
+
+            {/* Stats — now reads from c.stats, unique per card */}
+            <div style={{
+              display: "flex", gap: 16, paddingTop: 14,
+              borderTop: "1px solid rgba(255,255,255,0.07)",
+              flexWrap: "wrap",
+            }}>
+              {c.stats.map(([ic, n, l]) => (   // ✅ c.stats instead of hardcoded array
+                <div key={l} style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 12, color: "#ADA9A4" }}>
+                  {ic} <strong style={{ color: offwhite }}>{n}</strong> {l}
                 </div>
-              </div>
-            </section>
+              ))}
+            </div>
+
+          </div>
+        </div>
+      ))}
+    </div>
+    </div>
+  </section>
 
             {/* ── REVIEWS ──────────────────────────────────────────────────── */}
             <section id="reviews" style={{ background: "#0F0E0C", padding: isMobile ? "64px 5vw" : "88px 6vw" }}>
               <div style={{ maxWidth: 960, margin: "0 auto" }}>
                 <SectionLabel>Client Reviews</SectionLabel>
                 <H2 light>
-                  What Brands{" "}
+                  What Brands
                   <em style={{ fontStyle: "italic", color: g }}>Say</em>
                 </H2>
                 <div style={{
