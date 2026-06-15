@@ -69,7 +69,7 @@
           text: "The copy didn't feel like marketing — it felt like a conversation. That's rare, and it's what makes her stand out from every other digital marketer I've worked with.",
         },
         {
-          brand: "Sandos Bakeshop", role: "Food and Beverage · Content Calendar", init: "RS", color: "#4A2D40",
+          brand: "Remih Skincare", role: "Skincare Brand · Content Calendar", init: "RS", color: "#4A2D40",
           text: "She delivered a full 30-day content calendar we could actually execute — post briefs, image direction, captions included. Like having a full in-house creative team.",
         },
       ];
@@ -99,7 +99,7 @@
 
       const ANALYTICS_CARDS = [
         { platform: "Facebook Reel Insights",          headline: "18,236 Views · 12,030 Reach · 570 Interactions · 1d 4h Watch Time", image: "ogo6.jpeg" },
-        { platform: "Google Ads — Campaign",           headline: "Conversions ↑97% · 23,500 Total Conversions · CPA $4.52",           image: "ogo7.png" },
+        { platform: "Google Ads — Campaign",           headline: "Conversions ↑97% · 23,500 Total Conversions · CPA $4.52",           image: "ogo7.jpeg" },
         { platform: "Instagram Professional Dashboard",headline: "5,203 Views ↑100% · Engagement ↑100% · Net Followers ↑100%",        image: "ogo8.jpeg" },
         { platform: "Facebook Insights",               headline: "40K Views · 991 Interactions · Follows ↑17.1% · Link Clicks ↑66.7%", image: "ogo9.jpeg" },
         { platform: "Instagram Insights",              headline: "14.2K Views ↑47.5% · Interactions ↑127% · Follows ↑106%",           image: "ogo10.jpeg" },
@@ -342,7 +342,7 @@
                     borderRadius: 8, overflow: "hidden",
                     width: "fit-content", maxWidth: "100%",
                   }}>
-                    {[["3+","Brands"],["54K+","Views/mo"],["127%","Growth"],["2","Continents"]].map(([n, l], idx, arr) => (
+                    {[["4+","Brands"],["54K+","Views/mo"],["127%","Growth"],["2","Continents"]].map(([n, l], idx, arr) => (
                       <div key={l} style={{
                         padding: isMobile ? "12px 16px" : "14px 22px",
                         borderRight: idx < arr.length - 1 ? "1px solid rgba(201,168,76,0.15)" : "none",
@@ -644,7 +644,7 @@
               <div style={{ maxWidth: 960, margin: "0 auto" }}>
                 <SectionLabel>Proof of Performance</SectionLabel>
                 <H2 light>
-                  Results That{" "}
+                  Results That
                   <em style={{ fontStyle: "italic", color: g }}>Speak</em>
                 </H2>
 
@@ -657,16 +657,17 @@
                     <div key={i} style={{
                       background: "rgba(255,255,255,0.04)",
                       border: "1px solid rgba(201,168,76,0.16)",
-                      borderRadius: 10, padding: "20px 18px",
+                      borderRadius: 10, padding: "15px 12px",
+                      width: "100%", display: "flex", flexDirection: "column", alignItems: "center",
                     }}>
-                      <div style={{ fontSize: 22, marginBottom: 10 }}><img src={a.image} alt={a.platform} style={{ maxWidth: "auto", height:100, objectFit: "cover", display: "block" }} /></div>
+                      <div style={{ fontSize: 22, marginBottom: 10 }}><img src={a.image} alt={a.platform} style={{ maxWidth: "auto", height: 500, objectFit: "cover", display: "block" }} /></div>
                       <div style={{
                         fontSize: 9, letterSpacing: "0.16em", textTransform: "uppercase",
                         color: g, fontWeight: 700, marginBottom: 6,
                       }}>
                         {a.platform}
                       </div>
-                      <div style={{ fontSize: 13, color: "#C0BCB8", lineHeight: 1.65 }}>
+                      <div style={{ fontSize: 14, color: "#C0BCB8", lineHeight: 1.65 }}>
                         {a.headline}
                       </div>
                     </div>
@@ -741,7 +742,7 @@
                 desc: "Aspirational identity campaign built around transformation — not shame. Concept, copy, and creative brief all originated from my strategy.",
                 image: "ogo2.jpg",
                 stats: [                              
-                  ["❤️", "2,109", "likes"],
+                  ["❤️", "2,019", "likes"],
                   ["💬", "700",   "comments"],
                   ["↗️", "120",   "shares"],
                 ],
@@ -799,15 +800,16 @@
         </div>
       ))}
     </div>
-    </div>
-  </section>
+
+  </div>
+            </section>
 
             {/* ── REVIEWS ──────────────────────────────────────────────────── */}
             <section id="reviews" style={{ background: "#0F0E0C", padding: isMobile ? "64px 5vw" : "88px 6vw" }}>
               <div style={{ maxWidth: 960, margin: "0 auto" }}>
                 <SectionLabel>Client Reviews</SectionLabel>
                 <H2 light>
-                  What Brands
+                  What Brands{" "}
                   <em style={{ fontStyle: "italic", color: g }}>Say</em>
                 </H2>
                 <div style={{
