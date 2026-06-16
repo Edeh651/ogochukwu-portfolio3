@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ogochukwu — Copywriter & Content Strategist</title>
+    <title>Ogochukwu postfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -37,10 +37,7 @@
     </style>
   </head>
   <body>
-    <!-- FIX: React & Babel scripts MUST come BEFORE the babel script that uses React -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
 
     <div id="root"></div>
 
@@ -99,11 +96,11 @@
 
       const ANALYTICS_CARDS = [
         { platform: "Facebook Reel Insights",          headline: "18,236 Views · 12,030 Reach · 570 Interactions · 1d 4h Watch Time", image: "ogo6.jpeg" },
-        { platform: "Facebook Ads — Campaign",           headline: "2.1M views ^ 525% increase in the month of June, 2025. Facebook Ads Retargeting.", image: "ogo7.jpeg" },
-        { platform: "Instagram Professional Dashboard",headline: "5,203 Views ↑100% · Engagement ↑100% · Net Followers ↑100%", image: "ogo8.jpeg" },
+        { platform: "Google Ads — Campaign",           headline: "Conversions ↑97% · 23,500 Total Conversions · CPA $4.52",           image: "ogo7.jpeg" },
+        { platform: "Instagram Professional Dashboard",headline: "5,203 Views ↑100% · Engagement ↑100% · Net Followers ↑100%",        image: "ogo8.jpeg" },
         { platform: "Facebook Insights",               headline: "40K Views · 991 Interactions · Follows ↑17.1% · Link Clicks ↑66.7%", image: "ogo9.jpeg" },
-        { platform: "Instagram Insights",              headline: "14.2K Views ↑47.5% · Interactions ↑127% · Follows ↑106%", image: "ogo10.jpeg" },
-        { platform: "Facebook Insights",               headline: "27.2K Views · 1.4K Interactions · Link Clicks ↑23.8%", image: "ogo11.jpeg" },
+        { platform: "Instagram Insights",              headline: "14.2K Views ↑47.5% · Interactions ↑127% · Follows ↑106%",           image: "ogo10.jpeg" },
+        { platform: "Facebook Insights",               headline: "27.2K Views · 1.4K Interactions · Link Clicks ↑23.8%",              image: "ogo11.jpeg" },
       ];
 
       // Design tokens
@@ -342,7 +339,7 @@
                     borderRadius: 8, overflow: "hidden",
                     width: "fit-content", maxWidth: "100%",
                   }}>
-                    {[["3+","Brands"],["54K+","Views/mo"],["127%","Growth"],["2","Continents"]].map(([n, l], idx, arr) => (
+                    {[["4+","Brands"],["54K+","Views/mo"],["127%","Growth"],["2","Continents"]].map(([n, l], idx, arr) => (
                       <div key={l} style={{
                         padding: isMobile ? "12px 16px" : "14px 22px",
                         borderRight: idx < arr.length - 1 ? "1px solid rgba(201,168,76,0.15)" : "none",
@@ -645,7 +642,7 @@
                 <SectionLabel>Proof of Performance</SectionLabel>
                 <H2 light>
                   Results That
-                  <em style={{ fontStyle: "italic", color: g }}> Speak</em>
+                  <em style={{ fontStyle: "italic", color: g }}>Speak</em>
                 </H2>
 
                 <div style={{
@@ -717,8 +714,8 @@
             <div style={{ maxWidth: 960, margin: "0 auto" }}>
                 <SectionLabel>Design Creatives</SectionLabel>
                 <H2>
-                  Copy That
-                  <em style={{ fontStyle: "italic", color: accent }}> Converts</em>
+                  Copy That{" "}
+                  <em style={{ fontStyle: "italic", color: accent }}>Converts</em>
                 </H2>
 
                 <div style={{
@@ -809,8 +806,8 @@
               <div style={{ maxWidth: 960, margin: "0 auto" }}>
                 <SectionLabel>Client Reviews</SectionLabel>
                 <H2 light>
-                  What Brands
-                  <em style={{ fontStyle: "italic", color: g }}> Say</em>
+                  What Brands{" "}
+                  <em style={{ fontStyle: "italic", color: g }}>Say</em>
                 </H2>
                 <div style={{
                   display: "grid",
@@ -1010,5 +1007,9 @@
       const root = ReactDOM.createRoot(document.getElementById("root"));
       root.render(<Portfolio />);
     </script>
+    <!-- FIX: React & Babel scripts MUST come BEFORE the babel script that uses React -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.23.10/babel.min.js"></script>
   </body>
 </html>
