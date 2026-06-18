@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ogochukwu postfolio</title>
+    <title>Ogochukwu — Copywriter & Content Strategist</title>
 
-    
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- ✅ React & Babel FIRST — before everything else -->
+    <script crossorigin src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone@7.23.10/babel.min.js"></script>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -25,25 +25,21 @@
       }
       button, a { font-family: 'DM Sans', 'Segoe UI', Arial, sans-serif; }
 
-      /* Fade-in animation */
       @keyframes fadeUp {
         from { opacity: 0; transform: translateY(24px); }
         to   { opacity: 1; transform: translateY(0); }
       }
-      .fade-up { animation: fadeUp 0.7s ease both; }
+      .fade-up   { animation: fadeUp 0.7s ease both; }
       .fade-up-2 { animation: fadeUp 0.7s 0.15s ease both; }
       .fade-up-3 { animation: fadeUp 0.7s 0.3s ease both; }
       .fade-up-4 { animation: fadeUp 0.7s 0.45s ease both; }
 
-      /* Smooth hover on cards */
       .work-card:hover { transform: translateY(-3px); transition: transform 0.25s ease; }
 
-      /* Mobile: ensure nothing overflows horizontally */
       section, div { max-width: 100%; }
     </style>
   </head>
   <body>
-    
 
     <div id="root"></div>
 
@@ -84,7 +80,6 @@
         { num: "100%",  lbl: "Instagram Views Growth",        badge: "↑ In 28 Days",   green: true  },
       ];
 
-      // FIX: removed duplicate id:2
       const SOCIALS = [
         { id: 1, name: "LinkedIn",  url: "https://www.linkedin.com/in/edeh-ogochukwu-b75269215", icon: "in" },
         { id: 2, name: "Email",     url: "mailto:Ogochukwuprecious171@gmail.com",                 icon: "✉"  },
@@ -100,25 +95,25 @@
         { emoji: "📅", name: "Content Calendars",     desc: "Monthly calendars — ideated, structured, and delivered ready to hand to any creative team." },
       ];
 
+      // ✅ FIXED: broken string on line 2 now has proper closing quote
       const ANALYTICS_CARDS = [
-        { platform: "Facebook Reel Insights",          headline: "18,236 Views · 12,030 Reach · 570 Interactions · 1d 4h Watch Time", image: "ogo6.jpeg" },
-        { platform: "Facebook Ads — Campaign",           headline: "2.1M views ^ 525% increase in the month of June, 2025. Facebook Ads Retargeting., image: "ogo7.jpeg" },
-        { platform: "Instagram Professional Dashboard",headline: "5,203 Views ↑100% · Engagement ↑100% · Net Followers ↑100%",        image: "ogo8.jpeg" },
-        { platform: "Facebook Insights",               headline: "40K Views · 991 Interactions · Follows ↑17.1% · Link Clicks ↑66.7%", image: "ogo9.jpeg" },
-        { platform: "Instagram Insights",              headline: "14.2K Views ↑47.5% · Interactions ↑127% · Follows ↑106%",           image: "ogo10.jpeg" },
-        { platform: "Facebook Insights",               headline: "27.2K Views · 1.4K Interactions · Link Clicks ↑23.8%",              image: "ogo11.jpeg" },
+        { platform: "Facebook Reel Insights",           headline: "18,236 Views · 12,030 Reach · 570 Interactions · 1d 4h Watch Time",      image: "ogo6.jpeg" },
+        { platform: "Facebook Ads — Campaign",          headline: "2.1M Views ↑525% increase in June 2025. Facebook Ads Retargeting.",       image: "ogo7.jpeg" },
+        { platform: "Instagram Professional Dashboard", headline: "5,203 Views ↑100% · Engagement ↑100% · Net Followers ↑100%",             image: "ogo8.jpeg" },
+        { platform: "Facebook Insights",                headline: "40K Views · 991 Interactions · Follows ↑17.1% · Link Clicks ↑66.7%",     image: "ogo9.jpeg" },
+        { platform: "Instagram Insights",               headline: "14.2K Views ↑47.5% · Interactions ↑127% · Follows ↑106%",               image: "ogo10.jpeg" },
+        { platform: "Facebook Insights",                headline: "27.2K Views · 1.4K Interactions · Link Clicks ↑23.8%",                   image: "ogo11.jpeg" },
       ];
 
-      // Design tokens
-      const g       = "#C9A84C";   // gold
-      const dark    = "#1A1714";
-      const warm    = "#5C5852";
-      const accent  = "#B05A26";
-      const muted   = "#8A8480";
-      const border  = "#E4DDD2";
-      const offwhite= "#F9F7F3";
-      const serif   = "'Cormorant Garamond', Georgia, serif";
-      const sans    = "'DM Sans', 'Segoe UI', Arial, sans-serif";
+      const g        = "#C9A84C";
+      const dark     = "#1A1714";
+      const warm     = "#5C5852";
+      const accent   = "#B05A26";
+      const muted    = "#8A8480";
+      const border   = "#E4DDD2";
+      const offwhite = "#F9F7F3";
+      const serif    = "'Cormorant Garamond', Georgia, serif";
+      const sans     = "'DM Sans', 'Segoe UI', Arial, sans-serif";
 
       function Portfolio() {
         const [active,   setActive]   = useState("About");
@@ -138,7 +133,6 @@
           setActive(id);
         };
 
-        // ── Shared micro-components ──────────────────────────────────────────
         const Card = ({ children, style = {} }) => (
           <div className="work-card" style={{
             background: "white", border: "1px solid " + border,
@@ -161,11 +155,10 @@
           </span>
         );
 
-        const SectionLabel = ({ children, light = false }) => (
+        const SectionLabel = ({ children }) => (
           <div style={{
             fontSize: 10, letterSpacing: "0.24em", textTransform: "uppercase",
-            color: g, fontWeight: 700, marginBottom: 10,
-            fontFamily: sans,
+            color: g, fontWeight: 700, marginBottom: 10, fontFamily: sans,
           }}>
             {children}
           </div>
@@ -191,10 +184,10 @@
           </div>
         );
 
-        // ── NAV ──────────────────────────────────────────────────────────────
         return (
           <div style={{ fontFamily: sans, background: offwhite, color: dark, overflowX: "hidden", fontSize: 14 }}>
 
+            {/* ── NAV ── */}
             <nav style={{
               position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000,
               background: "rgba(22,19,16,0.97)", backdropFilter: "blur(14px)",
@@ -239,7 +232,7 @@
               )}
             </nav>
 
-            {/* Mobile dropdown menu */}
+            {/* Mobile dropdown */}
             {menuOpen && (
               <div style={{
                 position: "fixed", top: 56, left: 0, right: 0, zIndex: 999,
@@ -268,11 +261,10 @@
               </div>
             )}
 
-            {/* ── HERO ─────────────────────────────────────────────────────── */}
+            {/* ── HERO ── */}
             <section id="about-hero" style={{
               minHeight: "100vh",
               background: "linear-gradient(160deg, #1A1714 0%, #0F0D0B 100%)",
-              /* FIX: paddingTop accounts for fixed nav, rest of padding below */
               paddingTop: isMobile ? 72 : 80,
               paddingBottom: isMobile ? 56 : 80,
               paddingLeft: "6vw", paddingRight: "6vw",
@@ -284,12 +276,10 @@
                 background: "radial-gradient(ellipse at 15% 70%, rgba(201,168,76,0.10) 0%, transparent 55%)",
                 pointerEvents: "none",
               }} />
-              {/* subtle grain overlay */}
               <div style={{
                 position: "absolute", inset: 0, opacity: 0.03,
                 backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-                backgroundSize: "200px 200px",
-                pointerEvents: "none",
+                backgroundSize: "200px 200px", pointerEvents: "none",
               }} />
 
               <div style={{
@@ -298,10 +288,8 @@
                 display: isMobile ? "flex" : "grid",
                 flexDirection: isMobile ? "column" : undefined,
                 gridTemplateColumns: isMobile ? undefined : "1fr 420px",
-                gap: isMobile ? 40 : 56,
-                alignItems: "center",
+                gap: isMobile ? 40 : 56, alignItems: "center",
               }}>
-                {/* Left text col */}
                 <div className="fade-up">
                   <div style={{
                     display: "flex", alignItems: "center", gap: 10,
@@ -337,10 +325,8 @@
                     Human-first. Data-informed. Built to last.
                   </p>
 
-                  {/* Stats row — FIX: flex-wrap so it doesn't overflow on small screens */}
                   <div style={{
-                    display: "flex", flexWrap: "wrap",
-                    marginBottom: 32,
+                    display: "flex", flexWrap: "wrap", marginBottom: 32,
                     border: "1px solid rgba(201,168,76,0.2)",
                     borderRadius: 8, overflow: "hidden",
                     width: "fit-content", maxWidth: "100%",
@@ -351,16 +337,10 @@
                         borderRight: idx < arr.length - 1 ? "1px solid rgba(201,168,76,0.15)" : "none",
                         textAlign: "center",
                       }}>
-                        <div style={{
-                          fontFamily: serif, fontSize: isMobile ? 20 : 24,
-                          fontWeight: 700, color: g, lineHeight: 1,
-                        }}>
+                        <div style={{ fontFamily: serif, fontSize: isMobile ? 20 : 24, fontWeight: 700, color: g, lineHeight: 1 }}>
                           {n}
                         </div>
-                        <div style={{
-                          fontSize: 9, letterSpacing: "0.1em", textTransform: "uppercase",
-                          color: "#504C48", marginTop: 4,
-                        }}>
+                        <div style={{ fontSize: 9, letterSpacing: "0.1em", textTransform: "uppercase", color: "#504C48", marginTop: 4 }}>
                           {l}
                         </div>
                       </div>
@@ -388,27 +368,20 @@
                   </div>
                 </div>
 
-                {/* Right image col */}
                 <div className="fade-up-2" style={{
                   display: "flex", justifyContent: isMobile ? "center" : "flex-end",
                   alignItems: "center",
                 }}>
                   <div style={{
                     width: isMobile ? "min(300px, 80vw)" : "100%",
-                    maxWidth: 420,
-                    aspectRatio: "4 / 5",
-                    borderRadius: 24,
-                    overflow: "hidden",
-                    boxShadow: "0 32px 80px rgba(0,0,0,0.45)",
+                    maxWidth: 420, aspectRatio: "4 / 5", borderRadius: 24,
+                    overflow: "hidden", boxShadow: "0 32px 80px rgba(0,0,0,0.45)",
                     border: "1px solid rgba(201,168,76,0.18)",
-                    background: "rgba(255,255,255,0.05)",
-                    position: "relative",
+                    background: "rgba(255,255,255,0.05)", position: "relative",
                   }}>
-                    {/* gold accent bar */}
                     <div style={{
                       position: "absolute", bottom: 0, left: 0, right: 0,
-                      height: 4, background: `linear-gradient(90deg, ${g}, transparent)`,
-                      zIndex: 2,
+                      height: 4, background: `linear-gradient(90deg, ${g}, transparent)`, zIndex: 2,
                     }} />
                     <img src="ogopic.png" alt="Ogochukwu"
                       style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
@@ -418,7 +391,7 @@
               </div>
             </section>
 
-            {/* ── ABOUT ────────────────────────────────────────────────────── */}
+            {/* ── ABOUT ── */}
             <section id="about" style={{ background: offwhite, padding: isMobile ? "64px 5vw" : "88px 6vw" }}>
               <div style={{
                 maxWidth: 960, margin: "0 auto",
@@ -426,16 +399,11 @@
                 gridTemplateColumns: "200px 1fr",
                 gap: 56, alignItems: "start",
               }}>
-                {/* Avatar column */}
                 <div style={{ marginBottom: isMobile ? 36 : 0, textAlign: "center" }}>
-                  {/* FIX: Proper circular image — removed broken fontSize:64 wrapper */}
                   <div style={{
-                    width: isMobile ? 140 : 180,
-                    height: isMobile ? 140 : 180,
-                    borderRadius: "50%",
-                    overflow: "hidden",
-                    margin: "0 auto 14px",
-                    border: `3px solid ${g}`,
+                    width: isMobile ? 140 : 180, height: isMobile ? 140 : 180,
+                    borderRadius: "50%", overflow: "hidden",
+                    margin: "0 auto 14px", border: `3px solid ${g}`,
                     boxShadow: "0 16px 48px rgba(0,0,0,0.14)",
                   }}>
                     <img src="ogopic.png" alt="Ogochukwu"
@@ -445,14 +413,12 @@
                   <div style={{
                     background: g, color: dark, padding: "8px 14px",
                     borderRadius: 6, fontSize: 9.5, fontWeight: 700,
-                    letterSpacing: "0.1em", textTransform: "uppercase",
-                    display: "inline-block",
+                    letterSpacing: "0.1em", textTransform: "uppercase", display: "inline-block",
                   }}>
                     ✦ Available for Projects
                   </div>
                 </div>
 
-                {/* Text column */}
                 <div>
                   <SectionLabel>About Me</SectionLabel>
                   <H2>
@@ -475,11 +441,7 @@
                     intelligence to every brief.
                   </p>
 
-                  <div style={{
-                    display: "grid",
-                    gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
-                    gap: 10,
-                  }}>
+                  <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 10 }}>
                     {[
                       ["Education", "B.Sc. Archaeology & Tourism — UNN"],
                       ["Markets",   "Europe & West Africa"],
@@ -488,13 +450,9 @@
                     ].map(([l, v]) => (
                       <div key={l} style={{
                         background: "white", border: "1px solid " + border,
-                        borderLeft: "3px solid " + g,
-                        borderRadius: 6, padding: "11px 14px",
+                        borderLeft: "3px solid " + g, borderRadius: 6, padding: "11px 14px",
                       }}>
-                        <div style={{
-                          fontSize: 9, letterSpacing: "0.14em", textTransform: "uppercase",
-                          color: muted, marginBottom: 3,
-                        }}>
+                        <div style={{ fontSize: 9, letterSpacing: "0.14em", textTransform: "uppercase", color: muted, marginBottom: 3 }}>
                           {l}
                         </div>
                         <div style={{ fontSize: 13, color: dark, fontWeight: 500 }}>{v}</div>
@@ -505,19 +463,16 @@
               </div>
             </section>
 
-            {/* ── BRANDS STRIP ─────────────────────────────────────────────── */}
+            {/* ── BRANDS STRIP ── */}
             <div style={{ background: dark, padding: "44px 6vw" }}>
               <div style={{
                 textAlign: "center", fontSize: 15, letterSpacing: "0.22em",
-                textTransform: "uppercase", color: "rgba(255, 215, 0, 0.4)",
+                textTransform: "uppercase", color: "rgba(255,215,0,0.4)",
                 marginBottom: 28, fontWeight: 500,
               }}>
                 Brands I've Worked With
               </div>
-              <div style={{
-                display: "flex", justifyContent: "center",
-                gap: isMobile ? 24 : 44, flexWrap: "wrap",
-              }}>
+              <div style={{ display: "flex", justifyContent: "center", gap: isMobile ? 24 : 44, flexWrap: "wrap" }}>
                 {BRANDS.map(b => (
                   <div key={b.name} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
                     <div style={{
@@ -540,26 +495,20 @@
               </div>
             </div>
 
-            {/* ── WORK ─────────────────────────────────────────────────────── */}
+            {/* ── WORK ── */}
             <section id="work" style={{ padding: isMobile ? "64px 5vw" : "88px 6vw", background: offwhite }}>
               <div style={{ maxWidth: 960, margin: "0 auto" }}>
                 <SectionLabel>Selected Work</SectionLabel>
                 <H2>
-                  Campaigns &
+                  Campaigns &{" "}
                   <em style={{ fontStyle: "italic", color: accent }}>Content</em>
                 </H2>
 
-                {/* Work card 1 */}
                 <Card style={{ marginBottom: 28, borderLeft: "4px solid " + g }}>
                   <Tag>Skincare · Campaign Content · Carousel Copy</Tag>
-                  <h3 style={{
-                    fontFamily: serif, fontSize: 22, fontWeight: 600,
-                    color: dark, marginBottom: 16, marginTop: 0,
-                  }}>
+                  <h3 style={{ fontFamily: serif, fontSize: 22, fontWeight: 600, color: dark, marginBottom: 16, marginTop: 0 }}>
                     Remih Skincare — Brand Strategy
                   </h3>
-
-                  {/* FIX: Broken wall-of-text split into labelled paragraphs */}
                   <div style={{ fontSize: 14, lineHeight: 1.85, color: warm }}>
                     <p style={{ marginTop: 0, marginBottom: 12 }}>
                       <strong style={{ color: dark, fontWeight: 600 }}>The Challenge</strong><br />
@@ -590,15 +539,11 @@
                       restructuring both the content and the conversation around it.
                     </p>
                   </div>
-
                   <div style={{
                     marginTop: 20, background: offwhite, border: "1px solid " + border,
                     borderLeft: "3px solid " + g, borderRadius: 6, padding: "16px 18px",
                   }}>
-                    <div style={{
-                      fontSize: 9, letterSpacing: "0.16em", textTransform: "uppercase",
-                      color: g, fontWeight: 700, marginBottom: 10,
-                    }}>
+                    <div style={{ fontSize: 9, letterSpacing: "0.16em", textTransform: "uppercase", color: g, fontWeight: 700, marginBottom: 10 }}>
                       What I Delivered
                     </div>
                     <Bullet>The Challenge — the 15 comments, low visibility problem</Bullet>
@@ -607,13 +552,9 @@
                   </div>
                 </Card>
 
-                {/* Work card 2 */}
                 <Card style={{ borderLeft: "4px solid #2D6A4F" }}>
                   <Tag color="#2D6A4F" bg="#EBF4EF">Men's Wellness · Brand Campaign · Social Copy</Tag>
-                  <h3 style={{
-                    fontFamily: serif, fontSize: 22, fontWeight: 600,
-                    color: dark, marginBottom: 16, marginTop: 0,
-                  }}>
+                  <h3 style={{ fontFamily: serif, fontSize: 22, fontWeight: 600, color: dark, marginBottom: 16, marginTop: 0 }}>
                     Rungis Organics — Brand Voice & Campaign Copy
                   </h3>
                   <p style={{ fontSize: 14, lineHeight: 1.85, color: warm, marginTop: 0, marginBottom: 18 }}>
@@ -624,13 +565,9 @@
                   </p>
                   <div style={{
                     background: offwhite, border: "1px solid " + border,
-                    borderLeft: "3px solid #2D6A4F",
-                    borderRadius: 6, padding: "16px 18px",
+                    borderLeft: "3px solid #2D6A4F", borderRadius: 6, padding: "16px 18px",
                   }}>
-                    <div style={{
-                      fontSize: 9, letterSpacing: "0.16em", textTransform: "uppercase",
-                      color: "#2D6A4F", fontWeight: 700, marginBottom: 10,
-                    }}>
+                    <div style={{ fontSize: 9, letterSpacing: "0.16em", textTransform: "uppercase", color: "#2D6A4F", fontWeight: 700, marginBottom: 10 }}>
                       What I Delivered
                     </div>
                     <Bullet>Brand voice defined: direct, empathetic, shame-free</Bullet>
@@ -642,20 +579,16 @@
               </div>
             </section>
 
-            {/* ── RESULTS ──────────────────────────────────────────────────── */}
+            {/* ── RESULTS ── */}
             <section id="results" style={{ background: dark, padding: isMobile ? "64px 5vw" : "88px 6vw" }}>
               <div style={{ maxWidth: 960, margin: "0 auto" }}>
                 <SectionLabel>Proof of Performance</SectionLabel>
                 <H2 light>
-                  Results That
-                  <em style={{ fontStyle: "italic", color: g }}> Speak</em>
+                  Results That{" "}
+                  <em style={{ fontStyle: "italic", color: g }}>Speak</em>
                 </H2>
 
-                <div style={{
-                  display: "grid",
-                  gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
-                  gap: 14, marginBottom: 24,
-                }}>
+                <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 14, marginBottom: 24 }}>
                   {ANALYTICS_CARDS.map((a, i) => (
                     <div key={i} style={{
                       background: "rgba(255,255,255,0.04)",
@@ -663,11 +596,10 @@
                       borderRadius: 10, padding: "15px 12px",
                       width: "100%", display: "flex", flexDirection: "column", alignItems: "center",
                     }}>
-                      <div style={{ fontSize: 22, marginBottom: 10 }}><img src={a.image} alt={a.platform} style={{ maxWidth: "auto", height: 500, objectFit: "cover", display: "block" }} /></div>
-                      <div style={{
-                        fontSize: 9, letterSpacing: "0.16em", textTransform: "uppercase",
-                        color: g, fontWeight: 700, marginBottom: 6,
-                      }}>
+                      <div style={{ marginBottom: 10 }}>
+                        <img src={a.image} alt={a.platform} style={{ maxWidth: "100%", height: 500, objectFit: "cover", display: "block" }} />
+                      </div>
+                      <div style={{ fontSize: 9, letterSpacing: "0.16em", textTransform: "uppercase", color: g, fontWeight: 700, marginBottom: 6 }}>
                         {a.platform}
                       </div>
                       <div style={{ fontSize: 14, color: "#C0BCB8", lineHeight: 1.65 }}>
@@ -677,28 +609,17 @@
                   ))}
                 </div>
 
-                {/* Metrics grid */}
-                <div style={{
-                  display: "grid",
-                  gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(4,1fr)",
-                  gap: 12,
-                }}>
+                <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(4,1fr)", gap: 12 }}>
                   {METRICS.map(m => (
                     <div key={m.num} style={{
                       background: "rgba(255,255,255,0.04)",
                       border: "1px solid rgba(201,168,76,0.16)",
                       borderRadius: 10, padding: "18px 12px", textAlign: "center",
                     }}>
-                      <div style={{
-                        fontFamily: serif, fontSize: 34,
-                        fontWeight: 600, color: g, lineHeight: 1, marginBottom: 6,
-                      }}>
+                      <div style={{ fontFamily: serif, fontSize: 34, fontWeight: 600, color: g, lineHeight: 1, marginBottom: 6 }}>
                         {m.num}
                       </div>
-                      <div style={{
-                        fontSize: 9, letterSpacing: "0.1em", textTransform: "uppercase",
-                        color: "#6E6A66", marginBottom: 10,
-                      }}>
+                      <div style={{ fontSize: 9, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6E6A66", marginBottom: 10 }}>
                         {m.lbl}
                       </div>
                       <span style={{
@@ -715,99 +636,73 @@
               </div>
             </section>
 
-            {/* ── CREATIVES ────────────────────────────────────────────────── */}
+            {/* ── CREATIVES ── */}
             <section id="creatives" style={{ padding: isMobile ? "64px 5vw" : "88px 6vw", background: "white" }}>
-            <div style={{ maxWidth: 960, margin: "0 auto" }}>
+              <div style={{ maxWidth: 960, margin: "0 auto" }}>
                 <SectionLabel>Design Creatives</SectionLabel>
                 <H2>
                   Copy That{" "}
                   <em style={{ fontStyle: "italic", color: accent }}>Converts</em>
                 </H2>
 
-                <div style={{
-                  display: "grid",
-                  gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
-                  gap: 22,
-                }}>
-            {[
-              {
-                title: '"Mount Your Guard"',
-                desc: "Strength. Stamina. Confidence. You're built for more. — Campaign positioning Rungis Organics as the natural performance partner for men who demand more.",
-                image: "ogo1.jpg",
-                stats: [                              
-                  ["❤️", "1,658", "likes"],
-                  ["💬", "187",   "comments"],
-                  ["↗️", "268",   "shares"],
-                ],
-              },
-              {
-                title: '"Choose Which Man You Want To Be"',
-                desc: "Aspirational identity campaign built around transformation — not shame. Concept, copy, and creative brief all originated from my strategy.",
-                image: "ogo2.jpg",
-                stats: [                              
-                  ["❤️", "2,019", "likes"],
-                  ["💬", "700",   "comments"],
-                  ["↗️", "120",   "shares"],
-                ],
-              },
-            ].map((c, i) => (
-              <div key={i} style={{
-                background: dark, borderRadius: 12, overflow: "hidden",
-                boxShadow: "0 20px 56px rgba(0,0,0,0.14)",
-              }}>
-
-          {/* Image */}
-          <div style={{
-            height: isMobile ? 180 : 220,
-            background: "linear-gradient(135deg,#1B3A2D,#2D6A4F)",
-            overflow: "hidden",
-            display: "flex", alignItems: "center", justifyContent: "center",
-          }}>
-            <img src={c.image} alt={c.title}
-              style={{ width: "50%", height: "100%", objectFit: "cover", display: "flex" }}
-            />
-          </div>
-
-          {/* Text content */}
-          <div style={{ padding: isMobile ? "18px 18px 20px" : "20px 24px 24px" }}>
-            <div style={{
-              fontSize: 9, letterSpacing: "0.16em", textTransform: "uppercase",
-              color: g, fontWeight: 700, marginBottom: 6,
-            }}>
-              Rungis Organics · Men's Wellness
-            </div>
-            <div style={{
-              fontFamily: serif, fontSize: 18, fontWeight: 600,
-              color: offwhite, marginBottom: 10,
-            }}>
-              {c.title}
-            </div>
-            <div style={{ fontSize: 13, color: "#7A7672", lineHeight: 1.65, marginBottom: 16 }}>
-              {c.desc}
-            </div>
-
-            {/* Stats — now reads from c.stats, unique per card */}
-            <div style={{
-              display: "flex", gap: 16, paddingTop: 14,
-              borderTop: "1px solid rgba(255,255,255,0.07)",
-              flexWrap: "wrap",
-            }}>
-              {c.stats.map(([ic, n, l]) => (   // ✅ c.stats instead of hardcoded array
-                <div key={l} style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 12, color: "#ADA9A4" }}>
-                  {ic} <strong style={{ color: offwhite }}>{n}</strong> {l}
+                <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 22 }}>
+                  {[
+                    {
+                      title: '"Mount Your Guard"',
+                      desc: "Strength. Stamina. Confidence. You're built for more. — Campaign positioning Rungis Organics as the natural performance partner for men who demand more.",
+                      image: "ogo1.jpg",
+                      stats: [
+                        ["❤️", "1,658", "likes"],
+                        ["💬", "187",   "comments"],
+                        ["↗️", "268",   "shares"],
+                      ],
+                    },
+                    {
+                      title: '"Choose Which Man You Want To Be"',
+                      desc: "Aspirational identity campaign built around transformation — not shame. Concept, copy, and creative brief all originated from my strategy.",
+                      image: "ogo2.jpg",
+                      stats: [
+                        ["❤️", "2,019", "likes"],
+                        ["💬", "700",   "comments"],
+                        ["↗️", "120",   "shares"],
+                      ],
+                    },
+                  ].map((c, i) => (
+                    <div key={i} style={{ background: dark, borderRadius: 12, overflow: "hidden", boxShadow: "0 20px 56px rgba(0,0,0,0.14)" }}>
+                      <div style={{
+                        height: isMobile ? 180 : 220,
+                        background: "linear-gradient(135deg,#1B3A2D,#2D6A4F)",
+                        overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center",
+                      }}>
+                        <img src={c.image} alt={c.title}
+                          style={{ width: "50%", height: "100%", objectFit: "cover", display: "block" }}
+                        />
+                      </div>
+                      <div style={{ padding: isMobile ? "18px 18px 20px" : "20px 24px 24px" }}>
+                        <div style={{ fontSize: 9, letterSpacing: "0.16em", textTransform: "uppercase", color: g, fontWeight: 700, marginBottom: 6 }}>
+                          Rungis Organics · Men's Wellness
+                        </div>
+                        <div style={{ fontFamily: serif, fontSize: 18, fontWeight: 600, color: offwhite, marginBottom: 10 }}>
+                          {c.title}
+                        </div>
+                        <div style={{ fontSize: 13, color: "#7A7672", lineHeight: 1.65, marginBottom: 16 }}>
+                          {c.desc}
+                        </div>
+                        <div style={{ display: "flex", gap: 16, paddingTop: 14, borderTop: "1px solid rgba(255,255,255,0.07)", flexWrap: "wrap" }}>
+                          {c.stats.map(([ic, n, l]) => (
+                            <div key={l} style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 12, color: "#ADA9A4" }}>
+                              {ic} <strong style={{ color: offwhite }}>{n}</strong> {l}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-
-          </div>
-        </div>
-      ))}
-    </div>
-
-  </div>
+              </div>
             </section>
 
-            {/* ── REVIEWS ──────────────────────────────────────────────────── */}
+            {/* ── REVIEWS ── */}
             <section id="reviews" style={{ background: "#0F0E0C", padding: isMobile ? "64px 5vw" : "88px 6vw" }}>
               <div style={{ maxWidth: 960, margin: "0 auto" }}>
                 <SectionLabel>Client Reviews</SectionLabel>
@@ -815,11 +710,7 @@
                   What Brands{" "}
                   <em style={{ fontStyle: "italic", color: g }}>Say</em>
                 </H2>
-                <div style={{
-                  display: "grid",
-                  gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
-                  gap: 18,
-                }}>
+                <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 18 }}>
                   {TESTIMONIALS.map((t, i) => (
                     <div key={i} style={{
                       background: "rgba(255,255,255,0.03)",
@@ -827,21 +718,11 @@
                       borderRadius: 10, padding: isMobile ? "22px 18px" : "28px 24px",
                       position: "relative",
                     }}>
-                      <div style={{
-                        position: "absolute", top: 18, right: 18,
-                        color: g, fontSize: 11, letterSpacing: 2,
-                      }}>★★★★★</div>
-                      <div style={{
-                        fontFamily: serif, fontSize: 52,
-                        color: "rgba(201,168,76,0.18)", lineHeight: 0.7, marginBottom: 14,
-                      }}>
+                      <div style={{ position: "absolute", top: 18, right: 18, color: g, fontSize: 11, letterSpacing: 2 }}>★★★★★</div>
+                      <div style={{ fontFamily: serif, fontSize: 52, color: "rgba(201,168,76,0.18)", lineHeight: 0.7, marginBottom: 14 }}>
                         "
                       </div>
-                      <p style={{
-                        fontFamily: serif, fontStyle: "italic",
-                        fontSize: 20, lineHeight: 1.75, color: "#C0BCB8",
-                        marginBottom: 20, marginTop: 0,
-                      }}>
+                      <p style={{ fontFamily: serif, fontStyle: "italic", fontSize: 20, lineHeight: 1.75, color: "#C0BCB8", marginBottom: 20, marginTop: 0 }}>
                         {t.text}
                       </p>
                       <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -864,17 +745,12 @@
               </div>
             </section>
 
-            {/* ── SERVICES ─────────────────────────────────────────────────── */}
+            {/* ── SERVICES ── */}
             <section id="services" style={{ padding: isMobile ? "64px 5vw" : "88px 6vw", background: offwhite }}>
               <div style={{ maxWidth: 960, margin: "0 auto" }}>
                 <SectionLabel>What I Offer</SectionLabel>
                 <H2>Services</H2>
-                <div style={{
-                  display: "grid",
-                  /* FIX: 2-col on medium screens, 3-col on large — uses CSS grid auto-fit */
-                  gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(3, 1fr)",
-                  gap: isMobile ? 12 : 18,
-                }}>
+                <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(3, 1fr)", gap: isMobile ? 12 : 18 }}>
                   {SERVICES.map(sv => (
                     <div key={sv.name} style={{
                       background: "white", border: "1px solid " + border,
@@ -882,10 +758,7 @@
                       transition: "box-shadow 0.2s",
                     }}>
                       <div style={{ fontSize: isMobile ? 20 : 24, marginBottom: 10 }}>{sv.emoji}</div>
-                      <div style={{
-                        fontFamily: serif, fontSize: isMobile ? 15 : 17,
-                        fontWeight: 600, color: dark, marginBottom: 8,
-                      }}>
+                      <div style={{ fontFamily: serif, fontSize: isMobile ? 15 : 17, fontWeight: 600, color: dark, marginBottom: 8 }}>
                         {sv.name}
                       </div>
                       <p style={{ fontSize: isMobile ? 12 : 13, lineHeight: 1.7, color: warm, margin: 0 }}>
@@ -897,11 +770,10 @@
               </div>
             </section>
 
-            {/* ── WHY IT MATTERS ───────────────────────────────────────────── */}
+            {/* ── WHY IT MATTERS ── */}
             <section style={{
               background: "linear-gradient(160deg,#1A1714 0%,#0D0C09 100%)",
-              textAlign: "center",
-              padding: isMobile ? "72px 5vw" : "100px 6vw",
+              textAlign: "center", padding: isMobile ? "72px 5vw" : "100px 6vw",
               position: "relative", overflow: "hidden",
             }}>
               <div style={{
@@ -910,10 +782,7 @@
                 pointerEvents: "none",
               }} />
               <div style={{ position: "relative" }}>
-                <div style={{
-                  fontSize: 10, letterSpacing: "0.24em", textTransform: "uppercase",
-                  color: g, fontWeight: 700, marginBottom: 14,
-                }}>
+                <div style={{ fontSize: 10, letterSpacing: "0.24em", textTransform: "uppercase", color: g, fontWeight: 700, marginBottom: 14 }}>
                   Why It Matters
                 </div>
                 <h2 style={{
@@ -926,19 +795,13 @@
                   {" "}— and how brands{" "}
                   <em style={{ fontStyle: "italic", color: g }}>thrive</em>.
                 </h2>
-                <p style={{
-                  fontSize: 15, lineHeight: 1.9, color: "#7A7672",
-                  maxWidth: 580, margin: "0 auto 44px",
-                }}>
+                <p style={{ fontSize: 15, lineHeight: 1.9, color: "#7A7672", maxWidth: 580, margin: "0 auto 44px" }}>
                   My background in Archaeology & Tourism taught me that every great
                   civilisation left its mark through the stories it told. I apply that
                   same principle to digital marketing — every brand has a story worth
                   telling, and my job is to tell it in a way that outlasts the algorithm.
                 </p>
-                <div style={{
-                  display: "flex", justifyContent: "center",
-                  gap: isMobile ? 24 : 40, flexWrap: "wrap",
-                }}>
+                <div style={{ display: "flex", justifyContent: "center", gap: isMobile ? 24 : 40, flexWrap: "wrap" }}>
                   {[
                     ["🔍","Research-Driven","Archaeology background"],
                     ["🌍","Cross-Cultural","Europe & West Africa"],
@@ -947,10 +810,7 @@
                   ].map(([icon, lbl, sub]) => (
                     <div key={lbl} style={{ textAlign: "center", minWidth: 80 }}>
                       <div style={{ fontSize: 22, marginBottom: 8 }}>{icon}</div>
-                      <div style={{
-                        fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase",
-                        color: g, fontWeight: 700,
-                      }}>
+                      <div style={{ fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", color: g, fontWeight: 700 }}>
                         {lbl}
                       </div>
                       <div style={{ fontSize: 11, color: "#554F4A", marginTop: 4 }}>{sub}</div>
@@ -960,8 +820,7 @@
               </div>
             </section>
 
-            {/* ── CONTACT / FOOTER ─────────────────────────────────────────── */}
-            {/* FIX: This was a bare <div> — upgraded to a proper <section> with id */}
+            {/* ── CONTACT / FOOTER ── */}
             <section id="contact" style={{
               background: dark, padding: isMobile ? "44px 5vw" : "52px 6vw",
               borderTop: "1px solid rgba(201,168,76,0.15)",
@@ -969,13 +828,10 @@
               <div style={{
                 maxWidth: 960, margin: "0 auto",
                 display: "flex", alignItems: "center",
-                justifyContent: "space-between",
-                flexWrap: "wrap", gap: 24,
+                justifyContent: "space-between", flexWrap: "wrap", gap: 24,
               }}>
                 <div>
-                  <div style={{
-                    fontFamily: serif, fontSize: 22, color: offwhite, marginBottom: 5,
-                  }}>
+                  <div style={{ fontFamily: serif, fontSize: 22, color: offwhite, marginBottom: 5 }}>
                     Ogo<span style={{ color: g }}>chukwu</span>
                   </div>
                   <div style={{ fontSize: 12, color: "#504C48" }}>
@@ -1013,6 +869,6 @@
       const root = ReactDOM.createRoot(document.getElementById("root"));
       root.render(<Portfolio />);
     </script>
-    
+
   </body>
 </html>
